@@ -1,0 +1,159 @@
+<?php
+class UpiCRMUIBuilder {
+    
+    function get_list_option() {
+        $UpiCRMFields = new UpiCRMFields();
+        
+        foreach ($UpiCRMFields->get() as $field) { 
+           $arr['content'][$field->field_id] = $field->field_name;
+        }
+        
+        $arr['leads']['lead_id'] = "ID";
+        $arr['leads']['time'] = "Time";
+        $arr['leads']['user_agent'] = "User Agent";
+        $arr['leads']['user_referer'] = "Referer";
+        $arr['leads']['user_ip'] = "IP";
+        
+        $arr['special']['actions'] = "Actions";
+        $arr['special']['source_id'] = "Form Name";
+        $arr['special']['user_id'] = "Assigned To";
+        $arr['special']['lead_status_id'] = "Lead Status";
+        $arr['special']['lead_management_comment'] = "Lead Management Comment";
+        
+
+        $arr['leads_campaign']['utm_source'] = "UTM Source";
+        $arr['leads_campaign']['utm_medium'] = "UTM Medium";
+        $arr['leads_campaign']['utm_term'] = "UTM Term";
+        $arr['leads_campaign']['utm_content'] = "UTM Content";
+        $arr['leads_campaign']['utm_campaign'] = "UTM Campaign";
+
+        return $arr;
+    }
+    
+    function lead_routing($lead,$route,$value,$map,$noHtml=false) {
+        $UpiCRMLeads = new UpiCRMLeads();
+        $UpiCRMLeadsStatus = new UpiCRMLeadsStatus();
+        $UpiCRMUsers = new UpiCRMUsers();
+        
+        switch ($route) {
+            case "leads":
+                $text = $lead->$value;
+            break;
+            case "leads_campaign":
+                $text = $lead->$value;
+            break;
+            case "content":
+                $text = $this->return_lead_content($lead,$value,$map);
+            break;
+            case "special":
+                switch ($value) {
+                    case "source_id":
+                        $text = $UpiCRMLeads->get_source_form_name($lead->source_id,$lead->source_type);
+                    break;
+                    case "user_id":
+                        if (!$noHtml)
+                            $text = $UpiCRMUsers->select_list($lead,"change_user");
+                        else 
+                            $text = $UpiCRMUsers->get_by_id($lead->$value);
+                    break;
+                    case "lead_status_id":
+                        if (!$noHtml)
+                            $text = $this->select_status_list($lead,"change_lead_status");
+                        else 
+                            $text = $UpiCRMLeadsStatus->get_status_name_by_id($lead->$value);
+                    break;
+                    case "lead_management_comment":
+                        if (!$noHtml)
+                            $text = $this->remarks_textarea($lead,"change_lead_remarks");
+                        else 
+                            $text = $lead->lead_management_comment;
+                    break;
+                    case "actions":
+                        if (!$noHtml) {
+                            $text= '<div class="upicrm_lead_actions">';
+                                $text.= '<span class="glyphicon glyphicon-question-sign" data-callback="request_status" data-lead_id="'.$lead->lead_id.'" title="Request status update from lead owner"></span>'; 
+                                $text.= '<span class="glyphicon glyphicon-floppy-save" data-callback="save" data-lead_id="'.$lead->lead_id.'" title="Save"></span>';
+                                $text.= '<span class="glyphicon glyphicon-edit" data-callback="edit" data-lead_id="'.$lead->lead_id.'" title="edit"></span>'; 
+                                $text.= '<span class="glyphicon glyphicon-remove" data-callback="remove" data-lead_id="'.$lead->lead_id.'" title="Remove"></span>'; 
+                            $text.= '</div>';
+                        }
+                    break;
+                    
+                }
+            break;
+        }
+        return $text;
+        
+    }
+    
+    function return_lead_content($lead,$value,$map) {
+        $content = json_decode($lead->lead_content,true);
+        
+        foreach ($map as $arr) {
+            if ($lead->source_id == $arr->source_id && $lead->source_type == $arr->source_type && $value == $arr->field_id) {
+                if (!is_array($content[$arr->fm_name])) {
+                    $text = $content[$arr->fm_name];
+                }
+                else {
+                    $text="";
+                    foreach ($content[$arr->fm_name] as $val) {
+                       $text.=$val.", "; 
+                    }
+                }
+                break;
+            }
+        }
+        
+        return $text;
+    }
+    
+    function return_lead_content_arr($lead,$value,$map) {
+        $content = json_decode($lead->lead_content,true);
+        
+        foreach ($map as $arr) {
+            if ($lead->source_id == $arr->source_id && $lead->source_type == $arr->source_type && $value == $arr->field_id) {
+                if (!is_array($content[$arr->fm_name])) {
+                    $text = $content[$arr->fm_name];
+                }
+                else {
+                    $text="";
+                    foreach ($content[$arr->fm_name] as $val) {
+                       $text.=$val.", "; 
+                    }
+                }
+                $lead_content_arr['text'] = $text;
+                $lead_content_arr['fm_name'] = $arr->fm_name;
+                $lead_content_arr['field_id'] = $arr->field_id;
+                $lead_content_arr['source_id'] = $arr->source_id;
+                $lead_content_arr['source_type'] = $arr->source_type;
+                break;
+            }
+        }
+        
+        return $lead_content_arr;
+    }
+    
+    function select_status_list($lead, $callback) {
+        $UpiCRMLeadsStatus = new UpiCRMLeadsStatus();
+        $get_status = $UpiCRMLeadsStatus->get();
+        $text ='<select name="lead_status_id" data-lead_id="'.$lead->lead_id.'" data-callback="'.$callback.'">';
+            foreach ($get_status as $status) { 
+                $selected = selected( $status->lead_status_id, $lead->lead_status_id, false);
+                $text.='<option value="'.$status->lead_status_id.'" '.$selected.'>'.$status->lead_status_name.'</option>';
+            }
+        $text.='</select>';
+        return $text;                         
+    }
+    
+    
+    function remarks_textarea($lead, $callback) {
+        $text ='<label class="textarea textarea-expandable">';
+            $text.='<textarea class="custom-scroll" name="lead_remarks" data-lead_id="'.$lead->lead_id.'" data-callback="'.$callback.'">';
+              $text.=$lead->lead_management_comment;
+            $text.='</textarea>';
+        $text.='</label>';
+        return $text;                         
+    }
+    
+}
+?>
