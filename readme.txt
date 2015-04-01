@@ -1,4 +1,4 @@
-=== UpiCRM – Universal WordPress CRM and Lead Management ===
+﻿=== UpiCRM – Universal WordPress CRM and Lead Management ===
 Contributors: upi
 Donate link: http://www.upicrm.com
 Tags: CRM, WORDPRESS, Lead Management, UPICRM, UTM tagging, HTTP referrer
@@ -115,8 +115,9 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 
 == Screenshots ==
 
-1.
-2.
+1. UpiCRM Options - Add User and manage permissions
+
+2. UPiCRM General Settings screen
 
 == Changelog ==
 
