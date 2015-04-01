@@ -115,9 +115,7 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 
 == Screenshots ==
 
-1. UpiCRM Options - Add User and manage permissions
-
-2. UPiCRM General Settings screen
+1. Options
 
 == Changelog ==
 
