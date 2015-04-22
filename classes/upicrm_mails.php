@@ -59,7 +59,7 @@ class UpiCRMMails extends WP_Widget {
         }
         $LeadVarText.="<br /><br />";
         $LeadVarText.='Please manage this lead here: <a href="'.get_admin_url().'admin.php?page=upicrm_allitems">'.get_admin_url().'admin.php?page=upicrm_allitems</a><br />';
-        $LeadVarText.='<br /><br /><a href="http://www.upicrm.com/?utm_source=upicrm_email">This mail was sent by UpiCRM - Universal Wordpress Plugin</a><br />';
+        $LeadVarText.='<br /><br /><a href="http://www.upicrm.com/?utm_source=upicrm_email">This mail was sent by UpiCRM - Universal Wordpress CRM Plugin</a><br />';
         
         $LeadVarTextNoHTML="";
         foreach ($list_option as $key => $arr) { 

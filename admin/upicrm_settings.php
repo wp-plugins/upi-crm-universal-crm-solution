@@ -4,26 +4,27 @@ if ( !class_exists('UpiCRMAdminSettings') ):
         public function Render() {
             global $SourceTypeID;
             $UpiCRMgform = new UpiCRMgform();
-            $UpiCRMwpcf7 = new UpiCRMwpcf7();            
+            $UpiCRMwpcf7 = new UpiCRMwpcf7(); 
+            $UpiCRMninja = new UpiCRMninja(); 
             
             switch ($_GET['action']) {
                 case 'save_email':
                     $this->updateEmails();
-                    $msg = "changes saved successfully";
+                    $msg = __('changes saved successfully','upicrm');
                     break;
             }
             $tabs_html = '';
             $content_html = '';
             if($UpiCRMgform->is_active()) {                
                 foreach ($UpiCRMgform->get_all_form() as $key => $value) {                    
-                    $tabs_html .= '<li><a href="#f'.strval($key).'">'.$value.'</a></li>';
-                    $content_html .= '<div id="f'.$key.'"><div class="table-responsive"><table class="table"><thead><tr><th>Form Field</th><th>UPiCRM Field</th></tr></thead><tbody>';
+                    $tabs_html .= '<li><a href="#g'.strval($key).'">'.$value.'</a></li>';
+                    $content_html .= '<div id="g'.$key.'"><div class="table-responsive"><table class="table"><thead><tr><th>Form Field</th><th>UPiCRM Field</th></tr></thead><tbody>';
                     foreach ($UpiCRMgform->get_all_form_fields($key,true) as $inputName => $inputValue) {
                         $arr = array();
                         $arr["name"] = $inputName;
                         $arr["value"] = $inputValue;
                         $arr["source_id"] = $key;
-                        $arr["item_id"] = 'f'.$key;
+                        $arr["item_id"] = 'g'.$key;
                         $arr["source_type"] = $SourceTypeID['gform'];
                         $content_html .= $this->TabContentTemplate($arr);
                     }
@@ -47,6 +48,23 @@ if ( !class_exists('UpiCRMAdminSettings') ):
                 }
             }
             
+            if ($UpiCRMninja->is_active()) {
+                foreach ($UpiCRMninja->get_all_form() as $key => $value) {
+                    $tabs_html .= '<li><a href="#ninja'.strval($key).'">'.$value.'</a></li>'; 
+                    $content_html .= '<div id="ninja'.$key.'"><div class="table-responsive"><table class="table table-bordered table-striped"><thead><tr><th>Form Field</th><th>UPiCRM Field</th></tr></thead><tbody>';
+                    foreach ($UpiCRMninja->get_all_form_fields($key)  as $inputValue => $inputName) {
+                        $arr = array();
+                        $arr["name"] = $inputValue;
+                        $arr["value"] = $inputName;
+                        $arr["source_id"] = $key;
+                        $arr["source_type"] = $SourceTypeID['ninja'];
+                        $arr["item_id"] = 'ninja'.$key;
+                        $content_html .= $this->TabContentTemplate($arr);
+                    }
+                    $content_html .= '</tbody></table></div></div>';
+                }
+            }
+            
 ?>
 <script type="text/javascript">
     $j(document).ready(function () {
@@ -57,15 +75,16 @@ if ( !class_exists('UpiCRMAdminSettings') ):
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h1 class="page-title txt-color-blueDark">
-                <i class="fa fa-home"></i>&nbsp;UpiCRM&nbsp;<span>&nbsp;>&nbsp;<b>General Settings</b></span>
+                <i class="fa fa-home"></i>&nbsp;UpiCRM&nbsp;<span>&nbsp;>&nbsp;
+                    <b><?php _e('General Settings','upicrm'); ?></b></span>
             </h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
-            <h2>Lead Management</h2>
+            <h2><?php _e('Lead Management','upicrm'); ?></h2>
             <form method="post" action="admin.php?page=upicrm_settings&action=save_email">
-                Send all leads and updates to the following user: 
+                <?php _e('Send all leads and updates to the following user:','upicrm'); ?> 
                             <select name="default_email">
                                 <?php 
             $default_email = get_option('upicrm_default_email');
@@ -76,7 +95,7 @@ if ( !class_exists('UpiCRMAdminSettings') ):
                                 <?php } ?>
                             </select>
                 <br />
-                Leads are by default assigned to: 
+                <?php _e('Leads are by default assigned to:','upicrm'); ?>  
                             <select name="default_lead">
                                 <?php 
             $default_lead = get_option('upicrm_default_lead');
@@ -88,15 +107,15 @@ if ( !class_exists('UpiCRMAdminSettings') ):
                             </select>
                 <br />
                 <?php $email_format =  get_option('upicrm_email_format');?>
-                Email format: 
+                <?php _e('Email format:','upicrm'); ?>  
                 <select name="email_format">
                     <option value="1" <?php selected( $email_format, 1); ?>>HTML</option>
                     <option value="2" <?php selected( $email_format, 2); ?>>Text</option>
                 </select><br />
-                Distribute all leads and updated to additional email address (or multiple addresses separated by comma (,):
+                <?php _e('Distribute all leads and updated to additional email address (or multiple addresses separated by comma (,):','upicrm'); ?>
                 <input type="text" name="extra_email" value="<?php echo get_option('upicrm_extra_email'); ?>" /><br />
-                Change default "from" field for emails sent from UpiCRM: <input type="text" name="sender_email" value="<?php echo get_option('upicrm_sender_email'); ?>" /><br />
-                Email will be sent in the following format: &lt;name&gt; no-reply@yourdomain.com
+                                <?php _e('Change default "from" field for emails sent from','upicrm'); ?> UpiCRM: <input type="text" name="sender_email" value="<?php echo get_option('upicrm_sender_email'); ?>" /><br />
+                <?php _e('Email will be sent in the following format: &lt;name&gt; no-reply@yourdomain.com','upicrm'); ?>
                 <br />
                 
                 <?php submit_button(); ?>
@@ -105,7 +124,7 @@ if ( !class_exists('UpiCRMAdminSettings') ):
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h2>Map existing forms fields to UpiCRM structured database field</h2>
+            <h2><?php _e('Map existing forms fields to UpiCRM structured database field:','upicrm'); ?></h2>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
             <div class="table-responsive">
@@ -113,8 +132,8 @@ if ( !class_exists('UpiCRMAdminSettings') ):
                     <table id="table-tabs" class="table table-bordered">
                         <thead style="display: none;">
                             <tr>
-                                <th>Form Name</th>
-                                <th>Fields</th>
+                                <th><?php _e('Form Name','upicrm'); ?></th>
+                                <th><?php _e('Fields','upicrm'); ?></th>
                             </tr>
                         </thead>
                         <tbody>

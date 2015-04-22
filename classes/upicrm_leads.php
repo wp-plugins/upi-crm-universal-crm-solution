@@ -95,6 +95,9 @@ class UpiCRMLeads extends WP_Widget {
             case $SourceTypeID['wpcf7']:
                 $form_name = UpiCRMwpcf7::form_name($source_id);
             break;
+            case $SourceTypeID['ninja']:
+                $form_name = UpiCRMninja::form_name($source_id);
+            break;
         }
         
 	return $form_name;

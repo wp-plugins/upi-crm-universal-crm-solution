@@ -7,7 +7,7 @@ class UpiCRMAdminAdminEditLead{
         switch ($_GET['action']) {
              case 'save':
                     $this->updateContent($lead_id);
-                    $msg = "changes saved successfully";
+                    $msg =  __('changes saved successfully','upicrm');
             break;
         }
         
@@ -38,7 +38,7 @@ class UpiCRMAdminAdminEditLead{
                 UpiCrm 
                 <span>
                   > 
-                  Edit Lead
+                  <?php _e('Edit Lead','upicrm'); ?>
                 </span>
               </h1>
             </div>

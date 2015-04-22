@@ -57,17 +57,17 @@ if ( !class_exists('UpiCRMAdmin') ):
         public function onWpAdminMenu() {   
             $UpiCRMUsers = new UpiCRMUsers();
             if (1 <= $UpiCRMUsers->get_permission()) {
-                add_object_page(__('UpiCRM'), __('UpiCRM'), 'read', 'upicrm_index', array( $this, 'onDisplayDashboard' ), UPICRM_URL . 'resources/images/icon_crm.gif');
+                add_object_page('UpiCRM', 'UpiCRM', 'read', 'upicrm_index', array( $this, 'onDisplayDashboard' ), UPICRM_URL . 'resources/images/icon_crm.gif');
                 
-                add_submenu_page( 'upicrm_index', __('Show Leads'), __('Show Leads'), 'read', 'upicrm_allitems', array( $this, 'onDisplayMainMenu' ) );
+                add_submenu_page( 'upicrm_index', __('Show Leads','upicrm'), __('Show Leads','upicrm'), 'read', 'upicrm_allitems', array( $this, 'onDisplayMainMenu' ) );
                 add_submenu_page( 'upicrm_dont_show', '', '', 'read', 'upicrm_edit_lead', array( $this, 'onDisplayAdminEditLead' ) );
                 
             }
             if (1 < $UpiCRMUsers->get_permission()) {
-                add_submenu_page( 'upicrm_index', __('General Settings'), __('General Settings'), 'read', 'upicrm_settings', array( $this, 'onDisplayCommonSettings' ) );
-                add_submenu_page( 'upicrm_index', __('Existing Fields'), __('Existing Fields'), 'read', 'upicrm_existing_fields', array( $this, 'onDisplayExistingFields' ) );
-                add_submenu_page( 'upicrm_index', __('Existing Statuses'), __('Existing Statuses'), 'read', 'upicrm_existing_statuses', array( $this, 'onDisplayExistingStatuses' ) );
-                add_submenu_page( 'upicrm_index', __('Email Notifications'), __('Email Notifications'), 'read', 'upicrm_email_notifications', array( $this, 'onDisplayEmailNotifications' ) );
+                add_submenu_page( 'upicrm_index', __('General Settings','upicrm'), __('General Settings','upicrm'), 'read', 'upicrm_settings', array( $this, 'onDisplayCommonSettings' ) );
+                add_submenu_page( 'upicrm_index', __('Existing Fields','upicrm'), __('Existing Fields','upicrm'), 'read', 'upicrm_existing_fields', array( $this, 'onDisplayExistingFields' ) );
+                add_submenu_page( 'upicrm_index', __('Existing Statuses','upicrm'), __('Existing Statuses','upicrm'), 'read', 'upicrm_existing_statuses', array( $this, 'onDisplayExistingStatuses' ) );
+                add_submenu_page( 'upicrm_index', __('Email Notifications','upicrm'), __('Email Notifications','upicrm'), 'read', 'upicrm_email_notifications', array( $this, 'onDisplayEmailNotifications' ) );
             }
             
         }

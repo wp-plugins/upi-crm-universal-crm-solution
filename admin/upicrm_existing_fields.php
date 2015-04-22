@@ -7,7 +7,7 @@ if ( !class_exists('UpiCRMAdminExistingFields') ):
             switch ($_GET['action']) {
                 case 'save_field':
                     $this->saveField();
-                    $msg = "changes saved successfully";
+                    $msg = __('changes saved successfully','upicrm');
                     break;
             }
 ?>
@@ -23,7 +23,7 @@ if ( !class_exists('UpiCRMAdminExistingFields') ):
                 <i class="fa fa-home"></i>
                 UpiCRM
 							<span>> 
-                                                                    <b>Existing Fields</b>
+                                                                    <b><?php _e('Existing Fields','upicrm'); ?> </b>
                             </span>
             </h1>
         </div>
@@ -40,10 +40,10 @@ if ( !class_exists('UpiCRMAdminExistingFields') ):
     <div class="row">
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
             <form method="post" action="admin.php?page=upicrm_existing_fields&action=save_field">
-                Add additional fields and datatypes to UpiCRM:
+                <?php _e('Add additional fields and datatypes to UpiCRM:','upicrm'); ?>
                 <input type="text" name="field_name" value="" /><br />
 
-                <?php submit_button("Add New field"); ?>
+                <?php submit_button(__('Add New field','upicrm')); ?>
             </form>
             <br />
             <br />

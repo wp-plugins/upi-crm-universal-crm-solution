@@ -8,17 +8,17 @@ class UpiCRMUIBuilder {
            $arr['content'][$field->field_id] = $field->field_name;
         }
         
-        $arr['leads']['lead_id'] = "ID";
-        $arr['leads']['time'] = "Time";
-        $arr['leads']['user_agent'] = "User Agent";
-        $arr['leads']['user_referer'] = "Referer";
-        $arr['leads']['user_ip'] = "IP";
+        $arr['leads']['lead_id'] = __('ID','upicrm');
+        $arr['leads']['time'] = __('Time','upicrm');
+        $arr['leads']['user_agent'] = __('User Agent','upicrm');
+        $arr['leads']['user_referer'] = __('Referer','upicrm');
+        $arr['leads']['user_ip'] = __('IP','upicrm');
         
-        $arr['special']['actions'] = "Actions";
-        $arr['special']['source_id'] = "Form Name";
-        $arr['special']['user_id'] = "Assigned To";
-        $arr['special']['lead_status_id'] = "Lead Status";
-        $arr['special']['lead_management_comment'] = "Lead Management Comment";
+        $arr['special']['actions'] = __('Actions','upicrm');
+        $arr['special']['source_id'] = __('Form Name','upicrm');
+        $arr['special']['user_id'] = __('Assigned To','upicrm');
+        $arr['special']['lead_status_id'] = __('Lead Status','upicrm');
+        $arr['special']['lead_management_comment'] = __('Lead Management Comment','upicrm');
         
 
         $arr['leads_campaign']['utm_source'] = "UTM Source";
@@ -71,10 +71,10 @@ class UpiCRMUIBuilder {
                     case "actions":
                         if (!$noHtml) {
                             $text= '<div class="upicrm_lead_actions">';
-                                $text.= '<span class="glyphicon glyphicon-question-sign" data-callback="request_status" data-lead_id="'.$lead->lead_id.'" title="Request status update from lead owner"></span>'; 
-                                $text.= '<span class="glyphicon glyphicon-floppy-save" data-callback="save" data-lead_id="'.$lead->lead_id.'" title="Save"></span>';
-                                $text.= '<span class="glyphicon glyphicon-edit" data-callback="edit" data-lead_id="'.$lead->lead_id.'" title="edit"></span>'; 
-                                $text.= '<span class="glyphicon glyphicon-remove" data-callback="remove" data-lead_id="'.$lead->lead_id.'" title="Remove"></span>'; 
+                                $text.= '<span class="glyphicon glyphicon-question-sign" data-callback="request_status" data-lead_id="'.$lead->lead_id.'" title="'.__('Request status update from lead owner','upicrm').'"></span>'; 
+                                $text.= '<span class="glyphicon glyphicon-floppy-save" data-callback="save" data-lead_id="'.$lead->lead_id.'" title="'.__('Save','upicrm').'"></span>';
+                                $text.= '<span class="glyphicon glyphicon-edit" data-callback="edit" data-lead_id="'.$lead->lead_id.'" title="'.__('Edit','upicrm').'"></span>'; 
+                                $text.= '<span class="glyphicon glyphicon-remove" data-callback="remove" data-lead_id="'.$lead->lead_id.'" title="'.__('Remove','upicrm').'"></span>'; 
                             $text.= '</div>';
                         }
                     break;

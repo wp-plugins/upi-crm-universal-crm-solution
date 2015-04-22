@@ -1,10 +1,12 @@
 <?php
 /*
 Plugin Name: UpiCRM - Universal WordPress CRM Solution
+Text Domain: upicrm
+Domain Path: /languages
 Plugin URI: http://www.upicrm.com?utm_source=plpage
 Description: UpiCRM is a universal WordPress CRM solution can interface and extend the most popular WordPress contact forms plugins, and provide a complete CRM solution
 
-Version: 1.6.2
+Version: 1.7.1
 Author URI: http://www.upicrm.com
 
 Copyright 2014  UpiCRM.com, Inc.    (email : uri@focusweb.co.il)
@@ -24,7 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 session_start();
 /** Plugin Version */
-define('UPICRM_VERSION', '1.6.2');
+define('UPICRM_VERSION', '1.7.1');
 define('UPICRM_PATH', trailingslashit(dirname(__FILE__)) );
 define('UPICRM_DIR', trailingslashit(dirname(plugin_basename(__FILE__))) );
 define('UPICRM_URL', plugin_dir_url(dirname(__FILE__)) . UPICRM_DIR );
@@ -34,16 +36,23 @@ $upicrm_db_version =  3;
 /* Source type name:  */
 $SourceTypeName[1] = "Gravity Forms";
 $SourceTypeName[2] = "Contact Form 7";
+$SourceTypeName[3] = "Ninja Forms";
 
 /* Source type IDs:  */
 $SourceTypeID['gform'] = 1;
 $SourceTypeID['wpcf7'] = 2;
+$SourceTypeID['ninja'] = 3;
 
 require_once( plugin_dir_path( __FILE__ ) . 'upicrm_setup.php' );
 
 function upicrm_db() {
 	global $wpdb; 
 	return $wpdb->prefix."upicrm_";
+}
+
+add_action('plugins_loaded', 'upicrm_load_textdomain' );
+function upicrm_load_textdomain() {
+  load_plugin_textdomain( 'upicrm', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 }
 
 /* Setup */
@@ -66,6 +75,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_statistics.php' );
 /* Libraries */
 require_once( plugin_dir_path( __FILE__ ) . 'libraries/upicrm_gravity_forms.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'libraries/upicrm_contact_form_7.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'libraries/upicrm_ninja_forms.php' );
 
 /* Smart Admin UI */
 require_once( plugin_dir_path( __FILE__ ) . 'resources/includes/smartui/class.smartutil.php' );
@@ -119,3 +129,5 @@ if (!isset($_SESSION['utm_content']) && isset($_GET['utm_content']))
 
 if (!isset($_SESSION['utm_campaign']) && isset($_GET['utm_campaign']))
     $_SESSION['utm_campaign'] = $_GET['utm_campaign'];
+
+//echo get_bloginfo ( 'language' );

@@ -8,16 +8,16 @@ add_action('edit_user_profile_update', array(new UpiCRMUsers,'action_save_meta_u
 class UpiCRMUsers {
     function action_add_meta_user_profile($user) {
          ?>
-        <h3>UpiCRM options</h3>
+        <h3><?php _e('UpiCRM options','upicrm'); ?></h3>
 
         <table class="form-table">
             <tr>
-                <th><label for="upicrm_user_permission">Permission</label></th>
+                <th><label for="upicrm_user_permission"><?php _e('Permission','upicrm'); ?></label></th>
                 <td>
                     <select id="upicrm_user_permission" name="upicrm_user_permission">
-                        <option value="">None</option>
-                        <option value="1" <?php selected(get_the_author_meta('upicrm_user_permission', $user->ID), 1);?>>UpiCRM User</option>
-                        <option value="2" <?php selected(get_the_author_meta('upicrm_user_permission', $user->ID), 2);?>>UpiCRM Admin</option>
+                        <option value=""><?php _e('None','upicrm'); ?></option>
+                        <option value="1" <?php selected(get_the_author_meta('upicrm_user_permission', $user->ID), 1);?>><?php _e('UpiCRM User','upicrm'); ?></option>
+                        <option value="2" <?php selected(get_the_author_meta('upicrm_user_permission', $user->ID), 2);?>><?php _e('UpiCRM Admin','upicrm'); ?></option>
                     </select>
                 </td>
             </tr>

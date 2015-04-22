@@ -22,11 +22,11 @@ public function RenderLists() {
             $this->importAll();
         break;
         case 'reset':
-            $msg = "Reset all settings successfully";
+            $msg = __('Reset all settings successfully','upicrm');
             $UpiCRMFieldsMapping->empty_all();
         break;
         case 'delete_all':
-            $msg = "Delete all leads successfully";
+            $msg = __('Delete all leads successfully','upicrm');
             $UpiCRMLeads->empty_all();
         break;
     }  
@@ -60,11 +60,11 @@ public function RenderLists() {
         UpiCrm 
         <span>
           > 
-          Show Leads
+          <?php _e('Show Leads','upicrm'); ?>
         </span>
       </h1>
     </div>
-Choose Fields to display: 
+<?php _e('Choose Fields to display:','upicrm'); ?> 
     <select id="ChooseInputs" multiple="multiple">
         <?php  
         foreach ($list_option as $key => $arr) { 
@@ -136,7 +136,7 @@ Choose Fields to display:
             });
             
             $j("*[data-callback='remove']").click(function() {
-                if (confirm("Remove this lead?")) {
+                if (confirm("<?php _e('Remove this lead?','upicrm'); ?>")) {
                     GetSelect = $j(this);
                     var data = {
                         'action': 'remove_lead',
@@ -165,7 +165,7 @@ Choose Fields to display:
                 $j.post(ajaxurl, data , function(response) {
                    //console.log(response);
                    if (response == 1)
-                       alert("Saved successfully!");
+                       alert("<?php _e('Saved successfully!','upicrm'); ?>");
                    else 
                         alert("Oh no! Error!");
                 });
@@ -185,7 +185,7 @@ Choose Fields to display:
                 $j.post(ajaxurl, data , function(response) {
                    //console.log(response);
                    if (response == 1)
-                       alert("Request status update from lead owner successfully!");
+                       alert("<?php _e('Request status update from lead owner successfully!','upicrm'); ?>");
                    else 
                         alert("Oh no! Error!");
                 });
@@ -207,10 +207,10 @@ Choose Fields to display:
                 }
                 ?>   
     <?php if ($upicrm_is_admin) { ?>
-        <a href="javascript:void(0);" data-callback="excel_output">Export all leads data to Excel format</a> | 
-        <a href="admin.php?page=upicrm_allitems&action=import_all">import all existing data into UpiCRM</a> |
-        <a href="admin.php?page=upicrm_allitems&action=reset" onclick="return confirm('are you sure?');">reset all</a> |
-        <a href="admin.php?page=upicrm_allitems&action=delete_all" onclick="return confirm('are you sure?');">delete all</a>
+        <a href="javascript:void(0);" data-callback="excel_output"><?php _e('Export all leads data to Excel format','upicrm'); ?></a> | 
+        <a href="admin.php?page=upicrm_allitems&action=import_all"><?php _e('import all existing data into','upicrm'); ?> UpiCRM</a> |
+        <a href="admin.php?page=upicrm_allitems&action=reset" onclick="return confirm('<?php _e('are you sure?','upicrm'); ?>');"><?php _e('reset all','upicrm'); ?></a> |
+        <a href="admin.php?page=upicrm_allitems&action=delete_all" onclick="return confirm('<?php _e('are you sure?','upicrm'); ?>');"><?php _e('delete all','upicrm'); ?></a>
     <?php } ?>
   <!-- widget grid -->
   <section id="widget-grid" class="">
@@ -229,7 +229,7 @@ Choose Fields to display:
                           
                         </span>
                         <h2>
-                          Leads Table
+                          <?php _e('Leads Table','upicrm'); ?>
                         </h2>
                         
                       </header>
@@ -255,7 +255,7 @@ Choose Fields to display:
                                 foreach ($list_option as $key => $arr) { 
                                     foreach ($arr as $key2 => $value) {  ?>
                                   <th class="hasinput" data-belongs="<?php echo $key;?>[<?php echo $key2; ?>]">
-                                      <input type="text" class="form-control" placeholder="Filter <?php echo $value; ?>" />
+                                      <input type="text" class="form-control" placeholder="<?php _e('Filter','upicrm'); ?> <?php echo $value; ?>" />
                                   </th>
                                 <?php 
                                     }
@@ -392,11 +392,15 @@ Choose Fields to display:
     function importAll() {
         $UpiCRMgform = new UpiCRMgform();
         $UpiCRMwpcf7 = new UpiCRMwpcf7();
+        $UpiCRMninja = new UpiCRMninja();
         if($UpiCRMgform->is_active()) {
             $UpiCRMgform->import_all();
         }
         if($UpiCRMwpcf7->is_db_active()) {
             $UpiCRMwpcf7->import_all();
+        }
+        if ($UpiCRMninja->is_active()) {
+            $UpiCRMninja->import_all();
         }
     }
     

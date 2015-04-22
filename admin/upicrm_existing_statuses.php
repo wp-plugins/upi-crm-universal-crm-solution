@@ -7,7 +7,7 @@ if ( !class_exists('UpiCRMAdminExistingStatuses') ):
             switch ($_GET['action']) {
                 case 'save_status':
                     $this->saveStatus();
-                    $msg = "changes saved successfully";
+                    $msg = __('changes saved successfully','upicrm');
                     break;
             }
 ?>
@@ -64,7 +64,7 @@ if ( !class_exists('UpiCRMAdminExistingStatuses') ):
                 <i class="fa fa-home"></i>
                 UpiCRM
 							<span>> 
-                                                                    <b>Existing Statuses</b>
+                                                                    <b><?php _e('Existing Statuses','upicrm'); ?></b>
                             </span>
             </h1>
         </div>
@@ -81,10 +81,10 @@ if ( !class_exists('UpiCRMAdminExistingStatuses') ):
     <div class="row">
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
             <form method="post" action="admin.php?page=upicrm_existing_statuses&action=save_status">
-                Add additional status to UpiCRM:
+                <?php _e('Add additional status to UpiCRM:','upicrm'); ?>
                 <input type="text" name="status_name" value="" /><br />
 
-                <?php submit_button("Add New Status"); ?>
+                <?php submit_button(__('Add New Status','upicrm')); ?>
             </form>
             <br />
             <br />

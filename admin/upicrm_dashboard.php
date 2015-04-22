@@ -68,7 +68,7 @@ if ( !class_exists('UpiCRMAdminIndex') ):
         };
         <?php if ($is_admin) { ?>
         var lineData = {
-            labels: ["5 Weeks Ago", "4 Weeks Ago", "3 Weeks Ago", "2 Weeks Ago", "1 Week Ago", "This Week"],
+            labels: ["5 <?php _e('Weeks Ago','upicrm'); ?>", "4 <?php _e('Weeks Ago','upicrm'); ?>", "3 <?php _e('Weeks Ago','upicrm'); ?>", "2 <?php _e('Weeks Ago','upicrm'); ?>", "1 <?php _e('Week Ago','upicrm'); ?>", "<?php _e('This Week','upicrm'); ?>"],
             datasets: [
                 {
                     label: "My Second dataset",
@@ -173,7 +173,7 @@ if ( !class_exists('UpiCRMAdminIndex') ):
                 <i class="fa fa-home"></i>
                 UpiCRM
 							<span>> 
-								<b>Dashboard</b>
+								<b><?php _e('Dashboard','upicrm'); ?></b>
                             </span>
             </h1>
         </div>
@@ -205,19 +205,19 @@ if ( !class_exists('UpiCRMAdminIndex') ):
 				-->
                 <header>
                     <span class="widget-icon"><i class="glyphicon glyphicon-stats txt-color-darken"></i></span>
-                    <h2>Lead Overview</h2>
+                    <h2><?php _e('Lead Overview','upicrm'); ?></h2>
 
                     <ul class="nav nav-tabs pull-right in" id="myTab">
                         <li class="active">
-                            <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i><span class="hidden-mobile hidden-tablet">Live Stats</span></a>
+                            <a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i><span class="hidden-mobile hidden-tablet"><?php _e('Live Stats','upicrm'); ?></span></a>
                         </li>
 
                         <li style="display: none;">
-                            <a data-toggle="tab" href="#s2"><i class="fa fa-facebook"></i><span class="hidden-mobile hidden-tablet">Social Network</span></a>
+                            <a data-toggle="tab" href="#s2"><i class="fa fa-facebook"></i><span class="hidden-mobile hidden-tablet"><?php _e('Social Network','upicrm'); ?></span></a>
                         </li>
 
                         <li style="display: none">
-                            <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i><span class="hidden-mobile hidden-tablet">Revenue</span></a>
+                            <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i><span class="hidden-mobile hidden-tablet"><?php _e('Revenue','upicrm'); ?></span></a>
                         </li>
                     </ul>
 
@@ -227,7 +227,7 @@ if ( !class_exists('UpiCRMAdminIndex') ):
                 <div class="no-padding">
                     <!-- widget edit box -->
                     <div class="jarviswidget-editbox">
-                        test
+                        
                     </div>
                     <!-- end widget edit box -->
 
