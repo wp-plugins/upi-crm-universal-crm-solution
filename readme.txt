@@ -129,7 +129,8 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 
 = 1.7.1 =
 * Ninja Forms support
-* Language support
+* Language translation support with "codestyling localization" plugin
+* Added translation to Spanish
 * Version hotfixes
 = 1.6.2 =
 * Fixed installation
