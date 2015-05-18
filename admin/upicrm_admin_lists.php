@@ -185,7 +185,7 @@ public function RenderLists() {
                 $j.post(ajaxurl, data , function(response) {
                    //console.log(response);
                    if (response == 1)
-                       alert("<?php _e('Request status update from lead owner successfully!','upicrm'); ?>");
+                       alert("<?php _e('Status update request was sent successfully!','upicrm'); ?>");
                    else 
                         alert("Oh no! Error!");
                 });

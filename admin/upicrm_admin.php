@@ -51,7 +51,7 @@ if ( !class_exists('UpiCRMAdmin') ):
             wp_enqueue_script('upicrm_js_tableTools'); 
             wp_enqueue_script('upicrm_js_tablebootstrap');
             wp_enqueue_script('upicrm_js_responsive');
-            wp_enqueue_script('upicrm_js_main');    
+            wp_enqueue_script('upicrm_js_main');  
             
         } 
         public function onWpAdminMenu() {   
