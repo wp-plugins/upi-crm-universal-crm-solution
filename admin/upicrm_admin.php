@@ -61,6 +61,8 @@ if ( !class_exists('UpiCRMAdmin') ):
                 
                 add_submenu_page( 'upicrm_index', __('Show Leads','upicrm'), __('Show Leads','upicrm'), 'read', 'upicrm_allitems', array( $this, 'onDisplayMainMenu' ) );
                 add_submenu_page( 'upicrm_dont_show', '', '', 'read', 'upicrm_edit_lead', array( $this, 'onDisplayAdminEditLead' ) );
+                add_submenu_page( 'upicrm_dont_show', '', '', 'read', 'upicrm_api', array( $this, 'onDisplayAdminAPI' ) );
+                
                 
             }
             if (1 < $UpiCRMUsers->get_permission()) {
@@ -129,8 +131,15 @@ if ( !class_exists('UpiCRMAdmin') ):
         public function onDisplayAdminEditLead() {
             $this->beforeAllAdminPages();
             
-            $UpiCRMAdminAdminEditLead = new UpiCRMAdminAdminEditLead();
-            $UpiCRMAdminAdminEditLead->Render();
+            $UpiCRMAdminEditLead = new UpiCRMAdminEditLead();
+            $UpiCRMAdminEditLead->Render();
+        }
+        
+        public function onDisplayAdminAPI() {
+            $this->beforeAllAdminPages();
+            
+            $UpiCRMAdminAPI = new UpiCRMAdminAPI();
+            $UpiCRMAdminAPI->Render();
         }
         
     }

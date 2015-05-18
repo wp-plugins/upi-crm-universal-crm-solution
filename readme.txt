@@ -15,6 +15,9 @@ UpiCRM – Universal WordPress CRM and Lead Management
 INTRODUCTION - WHAT IS UPICRM AND HOW DOES IT WORK?
 UpiCRM is the simplest, most elegant and easy to use CRM solution and lead management solution, designed for WordPress users.
 
+Mobile Device Integration:
+Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
+
 UpiCRM is designed to easily integrate with your WordPress website. It works in parallel with existing solutions you are currently using, such as existing contact forms (Contact Form7, Gravity Form, and any other contact forms you are currently using (future version – contact us), in order to collect and mange leads and customers from your website.
 
 UpiCRM method of operation is as follows:
@@ -127,17 +130,13 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 
 == Changelog ==
 
-= 1.7.1 =
-* Ninja Forms support
-* Language translation support with "codestyling localization" plugin
-* Added translation to Spanish
-* Version hotfixes
-= 1.6.2 =
-* Fixed installation
+= 1.8.2 =
+* Fixed several issues and bugs. 
+* Mobile Device Integration: Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
 
 == Upgrade Notice ==
 
-= 1.6.2 =
+= 1.8.2 =
 be sure to backup your site before upgrading. 
 
 == Arbitrary section ==
@@ -145,6 +144,8 @@ be sure to backup your site before upgrading.
 ANALYSIS, TRACKING, MARKETING EFFECTIVENES WITH UPICRM
 The Challenge: Tracking leads from actual traffic source – campaigns, referring sites, search engines etc., through the complete lifecycle of every lead, and creating the full picture about your marketing effectiveness.
 
+Mobile Device Integration:
+Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
 
 UpiCRM supports URL tagging used for identifying traffic sources to a web site. 
 Note: Please read more about URL Builder provided by Google. (link)
@@ -155,4 +156,3 @@ On the bigger picture: With UpiCRM you will be able to analyze the effectiveness
 
 The way to achieve this is simply by adding the built-in fields  - ‘HTTP referrer’, ‘Campaign Source’ (utm_source), ‘Campaign Medium’ (utm_medium), ‘Campaign Term’ (utm_term) , ‘Campaign Content’ (utm_content), ‘Campaign Name’ (utm_campaign) - to the default "View leads" table.
 Alternatively, simply export all data to excel in order to create your own views and analysis. 
-

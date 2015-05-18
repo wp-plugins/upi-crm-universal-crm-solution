@@ -58,5 +58,21 @@ class UpiCRMUsers {
         
         return $displayName;
     }
+    
+    function is_have_permission_to_lead($user_id,$lead_id) {
+        $UpiCRMLeads = new UpiCRMLeads();
+        $permission = false;
+        if ($this->get_permission() == 1) {
+            $leadObj = $UpiCRMLeads->get_by_id($lead_id);
+            if ($leadObj->user_id == $user_id) {
+                $permission = true;
+            }
+        }
+        if ($this->get_permission() == 2) {
+            $permission = true;
+        }
+        
+        return $permission;
+    }
 }
 ?>
