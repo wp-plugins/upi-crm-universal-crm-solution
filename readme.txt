@@ -123,10 +123,13 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 3. UpiCRM Map existing forms fields to UPiCRM stuctured database field
 4. UpicCRM Status Management
 5. UpcCRM email template for lead management
-6. UpiCRM New Lead
-7. UpiCRM Main Table with export to excel option
-8. UpiCRM Main Table in row editor
-9. UpiCRM Dashboard
+6. UpcCRM SmartPhone screen 1
+7. UpcCRM SmartPhone screen 2
+8. UpcCRM SmartPhone screen 3
+9. UpiCRM New Lead
+10. UpiCRM Main Table with export to excel option
+11. UpiCRM Main Table in row editor
+12. UpiCRM Dashboard
 
 == Changelog ==
 
