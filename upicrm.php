@@ -6,7 +6,7 @@ Domain Path: /languages
 Plugin URI: http://www.upicrm.com?utm_source=plpage
 Description: UpiCRM is a universal WordPress CRM solution can interface and extend the most popular WordPress contact forms plugins, and provide a complete CRM solution
 
-Version: 1.8.2
+Version: 1.8.3
 Author URI: http://www.upicrm.com
 
 Copyright 2014  UpiCRM.com, Inc.    (email : uri@focusweb.co.il)
@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 session_start();
 /** Plugin Version */
-define('UPICRM_VERSION', '1.8.2');
+define('UPICRM_VERSION', '1.8.3');
 define('UPICRM_PATH', trailingslashit(dirname(__FILE__)) );
 define('UPICRM_DIR', trailingslashit(dirname(plugin_basename(__FILE__))) );
 define('UPICRM_URL', plugin_dir_url(dirname(__FILE__)) . UPICRM_DIR );
@@ -131,4 +131,3 @@ if (!isset($_SESSION['utm_content']) && isset($_GET['utm_content']))
 if (!isset($_SESSION['utm_campaign']) && isset($_GET['utm_campaign']))
     $_SESSION['utm_campaign'] = $_GET['utm_campaign'];
 
-//echo get_bloginfo ( 'language' );

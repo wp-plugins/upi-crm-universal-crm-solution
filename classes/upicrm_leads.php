@@ -45,6 +45,8 @@ class UpiCRMLeads extends WP_Widget {
             $this->wpdb->insert(upicrm_db()."leads_campaign", $ins_campaign);
 
         }
+        //$leadObj = $this->get_by_id($last_id);
+        do_action('upicrm_after_new_lead', $last_id);
         
         if ($sendEmail)
             $UpiCRMMails->send($last_id, "new_lead");
@@ -106,11 +108,13 @@ class UpiCRMLeads extends WP_Widget {
     function change_user($user_id,$lead_id) {
         //change lead user id
         $this->wpdb->update(upicrm_db()."leads", array("user_id" => $user_id), array("lead_id" => $lead_id));
+        do_action('upicrm_after_lead_change_user', $lead_id);
     }
     
     function change_status($lead_status_id,$lead_id) {
         //change lead status id
         $this->wpdb->update(upicrm_db()."leads", array("lead_status_id" => $lead_status_id), array("lead_id" => $lead_id));
+        do_action('upicrm_after_lead_change_status', $lead_id);
     }
     
     function remove_lead($lead_id) {

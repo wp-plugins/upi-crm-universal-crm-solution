@@ -37,7 +37,8 @@ Dashboards and KPI's:
 Gain instant knowledge of your current funnel and situation with the UpiCRM dashboard. 
 No more endless spreadsheets, manual reports or confused and angry managers. Simply provide your executive team with an easy access to the real-time, easy to understand UpiCRM dashboard.
 
-
+API and integratio:
+New API hooks to extend and interface with other plugins and solution. 
 
 == Installation ==
 
@@ -123,15 +124,17 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 3. UpiCRM Map existing forms fields to UPiCRM stuctured database field
 4. UpicCRM Status Management
 5. UpcCRM email template for lead management
-6. UpcCRM SmartPhone screen 1
-7. UpcCRM SmartPhone screen 2
-8. UpcCRM SmartPhone screen 3
-9. UpiCRM New Lead
-10. UpiCRM Main Table with export to excel option
-11. UpiCRM Main Table in row editor
-12. UpiCRM Dashboard
+6. UpiCRM New Lead
+7. UpiCRM Main Table with export to excel option
+8. UpiCRM Main Table in row editor
+9. UpiCRM Dashboard
 
 == Changelog ==
+
+= 1.8.3 =
+* Fixed UI issue preventing "screen" options in admin dashboard. 
+* Added RTL capabilites for Arabic / Hebrew lnaguages.
+* Added API / hooks .
 
 = 1.8.2 =
 * Fixed several issues and bugs. 
@@ -139,7 +142,7 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 
 == Upgrade Notice ==
 
-= 1.8.2 =
+= 1.8.3 =
 be sure to backup your site before upgrading. 
 
 == Arbitrary section ==

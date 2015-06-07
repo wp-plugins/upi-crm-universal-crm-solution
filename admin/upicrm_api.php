@@ -29,8 +29,7 @@ if ( !class_exists('UpiCRMAdminAPI') ):
             $UpiCRMLeadsStatus = new UpiCRMLeadsStatus();
 
             if ($UpiCRMUsers->is_have_permission_to_lead(get_current_user_id(),$lead_id)) {
-                $updateArr['lead_status_id'] = $lead_status_id;
-                $UpiCRMLeads->update_by_id($lead_id, $updateArr);
+                $UpiCRMLeads->change_status($lead_status_id, $lead_id);
                 
                 $leadObj = $UpiCRMLeads->get_by_id($lead_id);
                 $user = $user = get_user_by('id', $leadObj->user_id);
@@ -50,8 +49,7 @@ if ( !class_exists('UpiCRMAdminAPI') ):
             $UpiCRMMails = new UpiCRMMails();
 
             if ($UpiCRMUsers->is_have_permission_to_lead(get_current_user_id(),$lead_id)) {
-                $updateArr['user_id'] = $user_id;
-                $UpiCRMLeads->update_by_id($lead_id, $updateArr);
+                $UpiCRMLeads->change_user($user_id,$lead_id);
                 
                 $leadObj = $UpiCRMLeads->get_by_id($lead_id);
                 $user = $user = get_user_by('id', $leadObj->user_id);

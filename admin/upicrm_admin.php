@@ -4,16 +4,20 @@ if ( !class_exists('UpiCRMAdmin') ):
     class UpiCRMAdmin{
         public function __construct() {   
             add_action( 'admin_menu', array( $this, 'onWpAdminMenu' ) );
-  wp_register_style( 'upicrm_css_bootstrap', UPICRM_URL.'resources/css/bootstrap.css', FALSE, '0.1' );
-            wp_register_style( 'upicrm_css_bootstrap_rtl', UPICRM_URL.'resources/css/bootstrap-rtl.min.css', FALSE, '0.1' );
-            wp_register_style( 'upicrm_css', UPICRM_URL.'resources/css/smartadmin-production.css', FALSE, '0.1' );
+        } 
+        public function onWpAdminMenu() {   
+            wp_register_style( 'upicrm_css_bootstrap', UPICRM_URL.'resources/css/bootstrap.css', FALSE, '0.1' );
+            if (is_rtl()) {
+                wp_register_style( 'upicrm_css', UPICRM_URL.'resources/css/smartadmin-production-rtl.css', FALSE, '0.1' );
+            }
+            else {
+                wp_register_style( 'upicrm_css', UPICRM_URL.'resources/css/smartadmin-production.css', FALSE, '0.1' );
+            }
             wp_register_style( 'upicrm_css_smart_admin_skins', UPICRM_URL.'resources/css/smartadmin-skins.css', FALSE, '0.1' );
             wp_register_style( 'upicrm_css_font', UPICRM_URL.'resources/css/font-awesome.min.css', FALSE, '0.1' ); 
             wp_register_style( 'upicrm_css_bootstrap_multiselect', UPICRM_URL.'resources/css/bootstrap-multiselect.css', FALSE, '0.1' ); 
             wp_register_style( 'upicrm_main_style', UPICRM_URL.'css/style.css', FALSE, '0.1' ); 
-            
-  
-            
+                        
             wp_enqueue_style( 'upicrm_css_bootstrap' );
             wp_enqueue_style( 'upicrm_css' );
             wp_enqueue_style( 'upicrm_css_smart_admin_skins' );
@@ -52,9 +56,8 @@ if ( !class_exists('UpiCRMAdmin') ):
             wp_enqueue_script('upicrm_js_tablebootstrap');
             wp_enqueue_script('upicrm_js_responsive');
             wp_enqueue_script('upicrm_js_main');  
+
             
-        } 
-        public function onWpAdminMenu() {   
             $UpiCRMUsers = new UpiCRMUsers();
             if (1 <= $UpiCRMUsers->get_permission()) {
                 add_object_page('UpiCRM', 'UpiCRM', 'read', 'upicrm_index', array( $this, 'onDisplayDashboard' ), UPICRM_URL . 'resources/images/icon_crm.gif');
