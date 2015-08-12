@@ -143,6 +143,7 @@ Yes! from Version 1.9.0 and up. Make sure to always update to the latest version
 12. UpiCRM Dashboard
 13. UpiCRM Lead Routing Table
 
+
 == Changelog ==
 
 = 1.9.1 =
