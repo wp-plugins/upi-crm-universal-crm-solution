@@ -28,5 +28,11 @@ function upicrm_load($load) {
     require_once( UPICRM_PATH . $path ); 
 }
 
+function upicrm_string_cleaner($str) {
+    $str = strtolower($str);
+    $str = trim($str);
+    return $str;
+}
+
 
 ?>

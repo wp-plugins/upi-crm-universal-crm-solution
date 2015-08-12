@@ -73,6 +73,7 @@ if ( !class_exists('UpiCRMAdmin') ):
                 add_submenu_page( 'upicrm_index', __('Existing Fields','upicrm'), __('Existing Fields','upicrm'), 'read', 'upicrm_existing_fields', array( $this, 'onDisplayExistingFields' ) );
                 add_submenu_page( 'upicrm_index', __('Existing Statuses','upicrm'), __('Existing Statuses','upicrm'), 'read', 'upicrm_existing_statuses', array( $this, 'onDisplayExistingStatuses' ) );
                 add_submenu_page( 'upicrm_index', __('Email Notifications','upicrm'), __('Email Notifications','upicrm'), 'read', 'upicrm_email_notifications', array( $this, 'onDisplayEmailNotifications' ) );
+                add_submenu_page( 'upicrm_index', __('Auto Lead Management','upicrm'), __('Auto Lead Management','upicrm'), 'read', 'upicrm_lead_route', array( $this, 'onDisplayLeadRouting' ) );
             }
             
         }
@@ -143,6 +144,13 @@ if ( !class_exists('UpiCRMAdmin') ):
             
             $UpiCRMAdminAPI = new UpiCRMAdminAPI();
             $UpiCRMAdminAPI->Render();
+        }
+        
+        public function onDisplayLeadRouting() {
+            $this->beforeAllAdminPages();
+            
+            $UpiCRMAdminLeadRoute = new UpiCRMAdminLeadRoute();
+            $UpiCRMAdminLeadRoute->Render();
         }
         
     }

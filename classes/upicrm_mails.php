@@ -64,9 +64,12 @@ class UpiCRMMails extends WP_Widget {
         $LeadVarText.= '<tr bgcolor="#E6E6FA"><td><strong>Available Actions</strong></td></tr>';
         $LeadVarText.= '<tr><td>&nbsp;&nbsp;&nbsp; '.__('You can assign this lead to the following UpiCRM users:','upicrm');
         $get_users = get_users(array('role' => ''));
+        
         foreach ($get_users as $user) {
-            $LeadVarText.= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-            $LeadVarText.= '<a style="text-decoration: none;" href="' . get_admin_url() . 'admin.php?page=upicrm_api&action=change_lead_user_id&lead_id=' . $lead_id . '&user_id=' . $user->ID . '"><font color="blue">' . $user->display_name . ' (Link)</font></a>';
+            if (get_the_author_meta('upicrm_user_permission', $user->ID) > 0 ) {
+                $LeadVarText.= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                $LeadVarText.= '<a style="text-decoration: none;" href="' . get_admin_url() . 'admin.php?page=upicrm_api&action=change_lead_user_id&lead_id=' . $lead_id . '&user_id=' . $user->ID . '"><font color="blue">' . $user->display_name . ' (Link)</font></a>';
+            }
         }
         $LeadVarText.= '</td></tr>';
         $LeadVarText.= '<tr><td><br /><br />&nbsp;&nbsp;&nbsp; '.__('You can change the status of this lead to the one of the following:','upicrm');
@@ -93,6 +96,7 @@ class UpiCRMMails extends WP_Widget {
         $message = str_replace("[lead]", $LeadVarText, $message);
         $message = str_replace("[url]", get_site_url(), $message);
         $message = str_replace("[assigned-to]", $UpiCRMUsers->get_by_id($lead->user_id), $message);
+        $message = str_replace("[lead-status]", $UpiCRMLeadsStatus->get_status_name_by_id($lead->lead_status_id), $message);
         
         $headers = "From: UpiCRM". "\r\n";
         $headers.= 'MIME-Version: 1.0' . "\r\n";

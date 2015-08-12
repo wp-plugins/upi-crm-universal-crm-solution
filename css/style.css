@@ -155,3 +155,9 @@ h2 {
 .pointer-click {
     cursor: pointer;
 }
+
+.num_list {
+    list-style-type: decimal;
+    margin-left: 35px;
+    margin-top: 5px;
+}

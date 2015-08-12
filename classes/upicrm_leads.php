@@ -11,6 +11,7 @@ class UpiCRMLeads extends WP_Widget {
         //add lead (content as array)
         
         $UpiCRMMails = new UpiCRMMails();
+        $UpiCRMLeadsRoute = new UpiCRMLeadsRoute();
         
         $user = get_users( array( 'role' => 'Administrator' ));
         $user_id = get_option('upicrm_default_lead');
@@ -34,6 +35,8 @@ class UpiCRMLeads extends WP_Widget {
         
         if ($user_lead_id == 0) 
             upicrm_set_new_user($last_id);
+        
+        $UpiCRMLeadsRoute->do_route($last_id);
         
         if (isset($_SESSION['utm_source']) || isset($_SESSION['utm_medium']) || isset($_SESSION['utm_term']) || isset($_SESSION['utm_content']) || isset($_SESSION['utm_campaign'])) {
             $ins_campaign['lead_id'] = $last_id;

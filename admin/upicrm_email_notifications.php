@@ -46,7 +46,7 @@ if ( !class_exists('UpiCRMAdminEmailNotifications') ):
                            <h2><?php echo $mail->mail_event_name; ?></h2>
                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
                                <label><?php _e('Content:','upicrm'); ?> </label><br />
-                               <textarea name="<?php echo $mail->mail_event; ?>[mail_content]" rows="11" cols="50"><?php echo $mail->mail_content; ?></textarea>
+                               <textarea name="<?php echo $mail->mail_event; ?>[mail_content]" rows="12" cols="50"><?php echo $mail->mail_content; ?></textarea>
                            </div>
                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
                                <label><?php _e('Subject:','upicrm'); ?> </label><br />
@@ -59,6 +59,7 @@ if ( !class_exists('UpiCRMAdminEmailNotifications') ):
                                [lead]<br />
                                [url]<br />
                                [assigned-to]<br />
+                               [lead-status]<br />
                                [lead-plaintext]
                            </div>
                         </div>

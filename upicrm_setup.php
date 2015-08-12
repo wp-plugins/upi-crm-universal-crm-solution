@@ -151,7 +151,7 @@ function upicrm_setup_plugin() {
 
 function upicrm_update_db_check() {
     global $upicrm_db_version, $wpdb;
-    if (get_option("upicrm_db_version") != $upicrm_db_version) {
+    if (get_option("upicrm_db_version") <= 3) {
         
         $sql = "ALTER TABLE `".upicrm_db()."leads_status` ADD UNIQUE( `lead_status_name`);";
         $wpdb->query($sql);
@@ -166,7 +166,20 @@ function upicrm_update_db_check() {
         
         $sql = "UPDATE ".upicrm_db()."fields SET `field_name` = 'Phone number' WHERE `field_name` = 'Phone number home';";
         $wpdb->query($sql);
-        
+
+    }
+    
+    if (get_option("upicrm_db_version") != $upicrm_db_version) {
+        $sql = "CREATE TABLE ".upicrm_db()."leads_route (
+            `lead_route_id` int(11) NOT NULL AUTO_INCREMENT,
+            `field_id` int(11) NOT NULL,
+            `lead_route_type` int(11) NOT NULL,
+            `lead_route_value` text NOT NULL,
+            `user_id` int(11) NOT NULL,
+            `lead_status_id` int(11) NOT NULL,
+            PRIMARY KEY (`lead_route_id`)
+       ) $charset_collate;";
+        $wpdb->query($sql);
         update_option( "upicrm_db_version", $upicrm_db_version );
 
     }

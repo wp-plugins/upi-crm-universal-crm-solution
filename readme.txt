@@ -12,42 +12,49 @@ UpiCRM – Universal WordPress CRM and Lead Management
 
 == Description ==
 
-INTRODUCTION - WHAT IS UPICRM AND HOW DOES IT WORK?
-UpiCRM is the simplest, most elegant and easy to use CRM solution and lead management solution, designed for WordPress users.
+UpiCRM: WordPress CRM and lead management solution/plug-in.
+Simple & easy to install and set-up, powerful and intelligent solution, designed for all WordPress users. 
 
-Mobile Device Integration:
-Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
+UpiCRM is designed to easily integrate with your WordPress website. 
+It works in parallel with existing solutions you are currently using, such as existing contact forms - Contact Form7, Gravity Form, Ninja Forms, and any other contact forms you are currently using, in order to collect and mange leads and customers from your website.
 
-UpiCRM is designed to easily integrate with your WordPress website. It works in parallel with existing solutions you are currently using, such as existing contact forms (Contact Form7, Gravity Form, and any other contact forms you are currently using (future version – contact us), in order to collect and mange leads and customers from your website.
-
-UpiCRM method of operation is as follows:
+UpiCRM solution works as follows:
 Elegant, non-intrusive, easy to set-up: 
-UpiCRM maps your existing database/forms of leads from your current website, by using an advanced yet elegantly simple, semi-automatic mechanism, in order to create a new single, central, unified database of all your leads, while importing all past data from contact forms databases (if existing), and all new leads generated during the configuration mapping process. 
+UpiCRM maps your existing database/forms fields from your current website, by using an advanced yet elegantly simple, semi-automatic mechanism, in order to create a new single, central, unified database of all your leads.
+UpiCRM can also import existing data from contact forms databases (if existing), and import all leads during the configuration and mapping. 
 
 Complete Customer Lifecycle Management: 
-UpiCRM unified leads database unfolds new capabilities for managing the lifecycle of all leads, from receiving a new lead and routing it to the designated person, through managing the process required per each lead, and up to the closing of the process with each lead as recorded by yourself. 
+UpiCRM unified leads database unfolds new capabilities for managing the lifecycle of all leads:
+Receive new leads - track traffic sources, route lead to the designated person, manage status per each lead, up to the closing of the process.
+Future version V2.0, expected on October 2015, will include lead conversion to customer / contact. 
 
 Teamwork & Collaboration: 
-UpiCRM provides the means for the most efficient teamwork, by allowing new leads to be assigned to any designated function of your team – sales, marketing, executives, and service providers. 
+UpiCRM provides the means for the most efficient teamwork, by allowing new leads to be assigned to any designated function of your team – sales, marketing, executives, and service providers, while keep tracking the lead management process by the management team.   
 
 Analytics, Monitoring and tracking: 
-UpiCRM offers advanced capabilities of analytics and effectiveness analysis, by attaching the traffic source to each and every lead, as well as utilizing the URL tagging mechanism, in order to allow you to gather, report, and analyze the marketing activities you manage, starting right from the investment in a marketing channel. 
+UpiCRM offers the most advanced capabilities of analysis and effectiveness measurements, by attaching the traffic source to each and every lead, as well as utilizing the URL UTM tagging mechanism, in order to allow you to gather, report, and analyse the marketing activities you manage, starting right from the investment in a marketing channel. 
 
 Dashboards and KPI's: 
-Gain instant knowledge of your current funnel and situation with the UpiCRM dashboard. 
-No more endless spreadsheets, manual reports or confused and angry managers. Simply provide your executive team with an easy access to the real-time, easy to understand UpiCRM dashboard.
+Gain instant knowledge of your current funnel and predictions with the UpiCRM dashboard. 
+No more endless spreadsheets, manual reports or confused and angry managers. 
+Simply provide your executive team with an easy access to the real-time, easy to understand UpiCRM dashboard.
 
-API and integratio:
-New API hooks to extend and interface with other plugins and solution. 
+
 
 == Installation ==
 
 
-Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+Manual install:
+Upload `upicrm.zip` to the `/wp-content/plugins/` directory and extract all files. 
 Activate the plugin through the 'Plugins' menu in WordPress
+note: you can always download UpiCRM form our web site: www.upicrm.com/download
 
-FIRST TIME INSTALLATION AND CONFIGURATION
-After installing the plugin from upicrm.com website, or from "plugins" page on your WordPress site, you will need to perform the following actions before you can enjoy the capabilities of UpiCRM.
+Automatic installation:
+While on "Add New" screen on "Plugins" page from your WordPress dashboard / management screen - simply search for UpiCRM, and click the "install now" link. 
+Be sure to activate UpiCRM plugin after installation!
+
+First time configuration:
+After installing the plugin from upicrm.com website, or from "plugins" page on your WordPress site, you will need to perform the following actions before you can enjoy the capabilities of UpiCRM:
 
 First Step: Set up users and roles.
 
@@ -57,17 +64,17 @@ UpiCRM Admin: Can configure all options, grant access rights, view and edit all 
 
 UpiCRM User: Can view & manage leads assigned to him only.
 
-Simply create a WordPress user using the default "Users" menu provided by your WordPress management interface. Navigate to the lower end of the page, and assign the new user with the desired UpiCRM role:
+Simply create a WordPress user using the default "Users" menu provided by your WordPress management interface, or edit existing WordPress users, by navigating to the lower end of the page, and assigning the new user with the desired UpiCRM role:
 
-Note: if you have an existing WordPress user, you can simply assign user roles using the same screen above. 
+Note: remember that you can simply assign UpiCRM user roles using the native users management screens of WordPress.
 
-UpiCRM General Settings 
+UpiCRM General Settings:
 
 "Send all leads and updates to the following user": you may choose to distribute new leads by mail to any external eMail address, or to a list of multiple comma separated (",") eMail addresses.
 
 "By default, Leads are assigned to" : use this option in order to determine who will be assigned to deal with all new leads. 
  
-"Email format":  you can choose to send mail notifications as plain text or HTML. As some external systems (SalesForce, ZohoCRM etc) require plain text in order to parse new leads, you may choose to change default format to plain text. 
+"Email format":  you can choose to send mail notifications as plain text or HTML. As some external systems (SalesForce, ZohoCRM etc.) require plain text in order to parse new leads, you may choose to change default format to plain text. 
 
 Change default "from" field for emails sent from UpiCRM: use this option in order to set the "from" name used on email that will be sent by UpiCRM. 
 
@@ -75,16 +82,14 @@ Change default "from" field for emails sent from UpiCRM: use this option in orde
 Step 2: map all your existing forms and fields onto UpiCRM's structured database
 UpiCRM needs to import all your old data and map all your current forms and fields onto its superset of structured database. 
 In order to perform this task, navigate to the "General Settings" screen on the UpiCRM sub-menu.
-
 Please remember to perform this task again if you're adding more new forms to your site in the future!
 
-Use the dropdown menus on this screen in order to map ALL your current forms fields onto the UpiCRM structured database.
+Use the drop-down menus on this screen in order to map ALL your current forms fields onto the UpiCRM structured database.
 
 Tip: if you are using an additional field that does not appear on the UpiCRM predefined fields list, you can always add it to the UpiCRM database using the "Add additional fields and datatypes to UpiCRM" option.
 
 Note: this procedure needs to be performed only once per every form on your website.
-UpiCRM Lead status:
-Use this screen in order to add or change a status.
+UpiCRM Lead status: Use this screen in order to add or change a status.
 
 
 
@@ -95,6 +100,7 @@ Take a couple of minutes in order to personalize the messages you wish to distri
 Tip: use the variable [lead],  [url] and [assign-to] in order to embed information with the notifications you send. 
 In the future, UpiCRM will provide even more optional variables.
 
+Step 4: Optional - define rules and conditions automatically route leads to designated personnel or to change lead status. 
 
 == Frequently Asked Questions ==
 
@@ -108,7 +114,8 @@ CRM solutions are known to be very hard to implement… how easy is UpiCRM, star
 
 = with which forms plugins does UpiCRM work currently? = 
 
-currently we support Contact form 7 + Contact form DB , as well as Gravity forms. If you are using another solution, please contact us on www.upicrm.com/contact, and we'll be happy to promptly respond to your needs and those of the community. 
+currently we support Contact form 7 + Contact form DB , as well as Gravity forms and Ninja Forms.
+If you are using another solution, please contact us on www.upicrm.com/contact, and we'll be happy to promptly respond to your and the community's needs. 
 
 = is UpiCRM free? = 
 Yes. Please read the license file on the installation ZIP.
@@ -116,6 +123,9 @@ Yes. Please read the license file on the installation ZIP.
 = How can I track lead source in UpiCRM ? =
 
 UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form was filled?  2) traffic source – Referral – from which site/URL did the user arrive from? 2) UTM URL Tagging : add UTM tags to all campaigns and traffic sources for your site, UpiCRM will parse and attached this information to every new lead. 
+
+= Can I automatically change lead status or route lead to specific people, based on lead's contents? =
+Yes! from Version 1.9.0 and up. Make sure to always update to the latest version. 
 
 == Screenshots ==
 
@@ -125,33 +135,33 @@ UpiCRM provides 3 ways of tracking  a lead source: 1) Form name – which form w
 4. UpicCRM Status Management
 5. UpcCRM email template for lead management
 6. UpiCRM New Lead
-7. UpiCRM Main Table with export to excel option
-8. UpiCRM Main Table in row editor
-9. UpiCRM Dashboard
+7. UpiCRM EMail
+8. UpiCRM EMail
+9. UpiCRM EMail Settings
+10. UpiCRM Main Table with export to excel option
+11. UpiCRM Main Table in row editor
+12. UpiCRM Dashboard
+13. UpiCRM Lead Routing Table
 
 == Changelog ==
 
-= 1.8.3 =
-* Fixed UI issue preventing "screen" options in admin dashboard. 
-* Added RTL capabilites for Arabic / Hebrew lnaguages.
-* Added API / hooks .
-
-= 1.8.2 =
-* Fixed several issues and bugs. 
-* Mobile Device Integration: Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
+= 1.9.1 =
+* Added Lead Routing and automatic Lead management rules.
+* Fixed bug: only UpiCRM users are now appearing on the "Assign Lead to" fields and option.
+* Added - "Assigned To" as mail notification variable.
+* Added language: Russian
+* Added language: Hebrew
 
 == Upgrade Notice ==
 
-= 1.8.3 =
+= 1.9.1 =
 be sure to backup your site before upgrading. 
 
 == Arbitrary section ==
 
 ANALYSIS, TRACKING, MARKETING EFFECTIVENES WITH UPICRM
-The Challenge: Tracking leads from actual traffic source – campaigns, referring sites, search engines etc., through the complete lifecycle of every lead, and creating the full picture about your marketing effectiveness.
+The Challenge: Tracking leads from actual traffic source – campaigns, referring sites, search engines etc., through the complete life-cycle of every lead, and creating the full picture about your marketing effectiveness.
 
-Mobile Device Integration:
-Use the "one-click" actions available in the UpiCRM mail notification in order to quickly assign leads to any of your team members or to change leads status. 
 
 UpiCRM supports URL tagging used for identifying traffic sources to a web site. 
 Note: Please read more about URL Builder provided by Google. (link)
@@ -162,3 +172,4 @@ On the bigger picture: With UpiCRM you will be able to analyze the effectiveness
 
 The way to achieve this is simply by adding the built-in fields  - ‘HTTP referrer’, ‘Campaign Source’ (utm_source), ‘Campaign Medium’ (utm_medium), ‘Campaign Term’ (utm_term) , ‘Campaign Content’ (utm_content), ‘Campaign Name’ (utm_campaign) - to the default "View leads" table.
 Alternatively, simply export all data to excel in order to create your own views and analysis. 
+

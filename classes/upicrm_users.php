@@ -36,11 +36,11 @@ class UpiCRMUsers {
     }
     
     function select_list($lead, $callback) {
-        $get_users = get_users( array( 'role' => '' ) ); //Editor, Administrator
         $text ='<select name="user_id" data-lead_id="'.$lead->lead_id.'" data-callback="'.$callback.'">';
-            foreach ($get_users as $user) { 
-                $selected = selected( $lead->user_id, $user->ID, false);
-                $text.='<option value="'.$user->ID.'" '.$selected.'>'.$user->display_name.'</option>';
+            foreach ($this->get_as_array() as $user_id => $user_name) { 
+                $selected = selected( $lead->user_id, $user_id, false);
+                $text.='<option value="'.$user_id.'" '.$selected.'>'.$user_name.'</option>';
+                
             }
         $text.='</select>';
         return $text;                         
@@ -73,6 +73,26 @@ class UpiCRMUsers {
         }
         
         return $permission;
+    }
+    
+    function get_as_array() {
+         $get_users = get_users( array( 'role' => '' ) ); //Editor, Administrator
+            foreach ($get_users as $user) { 
+                if (get_the_author_meta('upicrm_user_permission', $user->ID) > 0 ) {
+                    $arr[$user->ID] = $user->display_name;
+                }
+            }
+        return $arr;        
+    }
+    
+    function get() {
+         $get_users = get_users( array( 'role' => '' ) ); //Editor, Administrator
+            foreach ($get_users as $user) { 
+                if (get_the_author_meta('upicrm_user_permission', $user->ID) > 0 ) {
+                    $arr[] = $user;
+                }
+            }
+        return $arr;        
     }
 }
 ?>

@@ -90,9 +90,12 @@ if ( !class_exists('UpiCRMAdminSettings') ):
             $default_email = get_option('upicrm_default_email');
             $get_users = get_users( array( 'role' => '' ) ); //Editor, Administrator
             foreach ($get_users as $user) { 
+                if (get_the_author_meta('upicrm_user_permission', $user->ID) > 0 ) {
                                 ?>
                                 <option value="<?php echo $user->user_email; ?>" <?php selected( $default_email, $user->user_email ); ?>><?php echo $user->display_name; ?></option>
-                                <?php } ?>
+                                <?php } 
+                                
+                }?>
                             </select>
                 <br />
                 <?php _e('Leads are by default assigned to:','upicrm'); ?>  
@@ -101,9 +104,12 @@ if ( !class_exists('UpiCRMAdminSettings') ):
             $default_lead = get_option('upicrm_default_lead');
             $get_users = get_users( array( 'role' => '' ) ); //Editor, Administrator
             foreach ($get_users as $user) { 
+                if (get_the_author_meta('upicrm_user_permission', $user->ID) > 0 ) {
                                 ?>
                                 <option value="<?php echo $user->ID; ?>" <?php selected( $default_lead, $user->ID ); ?>><?php echo $user->display_name; ?></option>
-                                <?php } ?>
+                                <?php } 
+            }
+                                ?>
                             </select>
                 <br />
                 <?php $email_format =  get_option('upicrm_email_format');?>

@@ -6,7 +6,7 @@ Domain Path: /languages
 Plugin URI: http://www.upicrm.com?utm_source=plpage
 Description: UpiCRM is a universal WordPress CRM solution can interface and extend the most popular WordPress contact forms plugins, and provide a complete CRM solution
 
-Version: 1.8.3
+Version: 1.9.1
 Author URI: http://www.upicrm.com
 
 Copyright 2014  UpiCRM.com, Inc.    (email : uri@focusweb.co.il)
@@ -26,12 +26,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 session_start();
 /** Plugin Version */
-define('UPICRM_VERSION', '1.8.3');
+define('UPICRM_VERSION', '1.9');
 define('UPICRM_PATH', trailingslashit(dirname(__FILE__)) );
 define('UPICRM_DIR', trailingslashit(dirname(plugin_basename(__FILE__))) );
 define('UPICRM_URL', plugin_dir_url(dirname(__FILE__)) . UPICRM_DIR );
 
-$upicrm_db_version =  3;
+$upicrm_db_version = 4;
 
 /* Source type name:  */
 $SourceTypeName[1] = "Gravity Forms";
@@ -70,7 +70,8 @@ require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_leads_status.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_users.php' ); 
 require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_ui_builder.php');
 require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_mails.php');
-require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_statistics.php' );     
+require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_statistics.php' ); 
+require_once( plugin_dir_path( __FILE__ ) . 'classes/upicrm_leads_route.php' ); 
 
 /* Libraries */
 require_once( plugin_dir_path( __FILE__ ) . 'libraries/upicrm_gravity_forms.php' );
@@ -110,6 +111,7 @@ if ( is_admin() ) {
      require_once( plugin_dir_path( __FILE__ ) . 'admin/upicrm_email_notifications.php' );
      require_once( plugin_dir_path( __FILE__ ) . 'admin/upicrm_edit_lead.php' );
      require_once( plugin_dir_path( __FILE__ ) . 'admin/upicrm_api.php' );
+     require_once( plugin_dir_path( __FILE__ ) . 'admin/upicrm_lead_route.php' );
      $UpiCRMAdmin = new UpiCRMAdmin();
 }
 
@@ -130,4 +132,3 @@ if (!isset($_SESSION['utm_content']) && isset($_GET['utm_content']))
 
 if (!isset($_SESSION['utm_campaign']) && isset($_GET['utm_campaign']))
     $_SESSION['utm_campaign'] = $_GET['utm_campaign'];
-
