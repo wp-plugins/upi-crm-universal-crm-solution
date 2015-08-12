@@ -136,8 +136,8 @@ Yes! from Version 1.9.0 and up. Make sure to always update to the latest version
 5. UpcCRM email template for lead management
 6. UpiCRM New Lead
 7. UpiCRM EMail
-8. UpiCRM EMail
-9. UpiCRM EMail Settings
+8. UpiCRM EMail Succesfully Assigned
+9. UpiCRM New Lead Settings
 10. UpiCRM Main Table with export to excel option
 11. UpiCRM Main Table in row editor
 12. UpiCRM Dashboard
